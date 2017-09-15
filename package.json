@@ -1,0 +1,22 @@
+{
+  "name": "threes-cli-game",
+  "version": "0.1.0",
+  "description": "The game of threes in your terminal",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mees-/threes-cli.git"
+  },
+  "keywords": [
+    "game"
+  ],
+  "author": "Mees van Dijk <mees@itisme.es> (http://mees.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mees-/threes-cli/issues"
+  },
+  "homepage": "https://github.com/mees-/threes-cli#readme"
+}
