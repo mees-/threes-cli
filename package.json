@@ -4,7 +4,8 @@
   "description": "The game of threes in your terminal",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel --out-dir dist/ src"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,18 @@
   "bugs": {
     "url": "https://github.com/mees-/threes-cli/issues"
   },
-  "homepage": "https://github.com/mees-/threes-cli#readme"
+  "homepage": "https://github.com/mees-/threes-cli#readme",
+  "dependencies": {
+    "clone": "^2.1.1",
+    "debounce-fn": "^1.0.0",
+    "ink": "^0.3.1",
+    "keypress": "^0.2.1",
+    "threes": "file:../game"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "prettier": "^1.7.0"
+  }
 }
