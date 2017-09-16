@@ -35,48 +35,66 @@ class App extends Component {
   }
 
   render() {
-    return this.game.ended ? <Text>You ded</Text> : <GameComponent grid={this.state} tileWidth={3} />
+    const highestNum = Math.max(
+      Math.max(...this.state[0]),
+      Math.max(...this.state[1]),
+      Math.max(...this.state[2]),
+      Math.max(...this.state[3]),
+    )
+    return this.game.ended ? (
+      <Text>You ded, score: {this.game.score()}</Text>
+    ) : (
+      <GameGrid board={this.state} tileWidth={highestNum.toString().length} />
+    )
   }
 }
 
 const Tile = ({ tileWidth, children }) => {
-  let str = ` ${children[0].toString().padStart(tileWidth, '0')} `
+  let str = `-${children[0].toString().padStart(tileWidth, '0')}-`
+
+  if (children[0] === '0') {
+    return <Text bgKeyword='white' keyword='black'>{str}</Text>
+  }
+
+  if (children[0] === '1') {
+    return <Text bgKeyword='red'>{str}</Text>
+  }
+
+  if (children[0] === '2') {
+    return <Text bgKeyword='blue'>{str}</Text>
+  }
+
+  if (children[0] === '3') {
+    return <Text bgKeyword='orange'>{str}</Text>
+  }
 
   return <Text>{str}</Text>
 }
 
-const GameComponent = ({ grid }) => {
-  let highest = 0
-  for (const row of Array.from(grid)) {
-    for (const num of row) {
-      if (highest < num) {
-        highest = num
-      }
-    }
-  }
-
-  const tileWidth = highest.toString().length
-  return <div>
-    <Tile tileWidth={tileWidth}>{grid[0][0]}</Tile>
-    <Tile tileWidth={tileWidth}>{grid[0][1]}</Tile>
-    <Tile tileWidth={tileWidth}>{grid[0][2]}</Tile>
-    <Tile tileWidth={tileWidth}>{grid[0][3]}</Tile>
-    <br />
-    <Tile tileWidth={tileWidth}>{grid[1][0]}</Tile>
-    <Tile tileWidth={tileWidth}>{grid[1][1]}</Tile>
-    <Tile tileWidth={tileWidth}>{grid[1][2]}</Tile>
-    <Tile tileWidth={tileWidth}>{grid[1][3]}</Tile>
-    <br />
-    <Tile tileWidth={tileWidth}>{grid[2][0]}</Tile>
-    <Tile tileWidth={tileWidth}>{grid[2][1]}</Tile>
-    <Tile tileWidth={tileWidth}>{grid[2][2]}</Tile>
-    <Tile tileWidth={tileWidth}>{grid[2][3]}</Tile>
-    <br />
-    <Tile tileWidth={tileWidth}>{grid[3][0]}</Tile>
-    <Tile tileWidth={tileWidth}>{grid[3][1]}</Tile>
-    <Tile tileWidth={tileWidth}>{grid[3][2]}</Tile>
-    <Tile tileWidth={tileWidth}>{grid[3][3]}</Tile>
-  </div>
+const GameGrid = ({ board, tileWidth }) => {
+  return (
+    <div>
+      <Tile tileWidth={tileWidth}>{board[0][0]}</Tile>
+      <Tile tileWidth={tileWidth}>{board[0][1]}</Tile>
+      <Tile tileWidth={tileWidth}>{board[0][2]}</Tile>
+      <Tile tileWidth={tileWidth}>{board[0][3]}</Tile>
+      <br />
+      <Tile tileWidth={tileWidth}>{board[1][0]}</Tile>
+      <Tile tileWidth={tileWidth}>{board[1][1]}</Tile>
+      <Tile tileWidth={tileWidth}>{board[1][2]}</Tile>
+      <Tile tileWidth={tileWidth}>{board[1][3]}</Tile>
+      <br />
+      <Tile tileWidth={tileWidth}>{board[2][0]}</Tile>
+      <Tile tileWidth={tileWidth}>{board[2][1]}</Tile>
+      <Tile tileWidth={tileWidth}>{board[2][2]}</Tile>
+      <Tile tileWidth={tileWidth}>{board[2][3]}</Tile>
+      <br />
+      <Tile tileWidth={tileWidth}>{board[3][0]}</Tile>
+      <Tile tileWidth={tileWidth}>{board[3][1]}</Tile>
+      <Tile tileWidth={tileWidth}>{board[3][2]}</Tile>
+      <Tile tileWidth={tileWidth}>{board[3][3]}</Tile>
+    </div>
+  )
 }
 
-const unmount = render(<App />, process.stderr)
+const unmount = render(<App />)
