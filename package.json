@@ -25,7 +25,7 @@
     "debounce-fn": "^1.0.0",
     "ink": "^0.3.1",
     "keypress": "^0.2.1",
-    "threes": "file:../game"
+    "threes": "git+https://github.com/mees-/threes.git"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
